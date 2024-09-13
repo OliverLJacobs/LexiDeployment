@@ -90,18 +90,13 @@ const ask = (question) =>
   );
   execSync("npm run build", { stdio: "inherit" });
 
-  // Use environment variables for admin username and password
-  const adminUsername = process.env.ADMIN_USERNAME || "defaultAdmin";  // Default if environment variable not set
-  const adminPassword = process.env.ADMIN_PASSWORD || "defaultPassword";  // Default if environment variable not set
-
-  if (!adminUsername || !adminPassword) {
-    console.error(colors.red, `${emojis.error} Admin credentials are missing.`, colors.reset);
-    process.exit(1);
-  }
+  // Hardcoded admin username and password
+  const adminUsername = 'OliverJa';
+  const adminPassword = 'ErgSo2497';
 
   console.log(
     colors.cyan,
-    `${emojis.info} Creating admin user...`,
+    `${emojis.info} Creating admin user with hardcoded credentials...`,
     colors.reset
   );
 
