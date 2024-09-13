@@ -26,8 +26,8 @@ const emojis = {
   );
 
   const envContent = `
-    REACT_APP_API_URL="http://localhost:5000"
-    REACT_APP_FRONTEND_URL="http://localhost:3000"
+    REACT_APP_API_URL="https://lexideployment.onrender.com"
+    REACT_APP_FRONTEND_URL="https://lexifire321.web.app""
   `.trim();
 
   fs.writeFileSync(".env", envContent);
