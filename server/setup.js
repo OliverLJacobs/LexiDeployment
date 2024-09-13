@@ -29,6 +29,23 @@ const emojis = {
   const mongodbPassword = 'ErgSo2497';
   const mongodbUrl = 'mongodb+srv://OliverJa:ErgSo2497@cluster0.vs2kc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
   const mongodbDbName = 'myDatabase';
+
+  const openaiApiKey = await ask(
+    `${colors.yellow}Enter your OPENAI_API_KEY: ${colors.reset}`
+  );
+  const mongodbUser = await ask(
+    `${colors.yellow}Enter your MONGODB_USER: ${colors.reset}`
+  );
+  const mongodbPassword = await ask(
+    `${colors.yellow}Enter your MONGODB_PASSWORD: ${colors.reset}`
+  );
+  const mongodbUrl = await ask(
+    `${colors.yellow}Enter your MONGODB_URL: ${colors.reset}`
+  );
+  const mongodbDbName = await ask(
+    `${colors.yellow}Enter your MONGODB_DB_NAME: ${colors.reset}`
+  );
+
   const frontendUrl = "https://lexifire321.web.app";
 
   const jwtSecretKey = crypto.randomBytes(16).toString("hex");
