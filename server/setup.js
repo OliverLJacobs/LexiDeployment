@@ -50,7 +50,7 @@ const ask = (question) =>
   const mongodbDbName = await ask(
     `${colors.yellow}Enter your MONGODB_DB_NAME: ${colors.reset}`
   );
-  const frontendUrl = "http://localhost:3000";
+  const frontendUrl = "https://lexifire321.web.app";
 
   const jwtSecretKey = crypto.randomBytes(16).toString("hex");
 
