@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable prettier/prettier */
 const fs = require("fs");
-const readline = require("readline");
 const { execSync } = require("child_process");
 const crypto = require("crypto");
 
@@ -20,14 +17,6 @@ const emojis = {
   error: "❌",
 };
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-const ask = (question) =>
-  new Promise((resolve) => rl.question(question, resolve));
-
 (async function setup() {
   console.log(
     colors.cyan,
@@ -35,22 +24,12 @@ const ask = (question) =>
     colors.reset
   );
 
-  const openaiApiKey = await ask(
-    `${colors.yellow}Enter your OPENAI_API_KEY: ${colors.reset}`
-  );
-  const mongodbUser = await ask(
-    `${colors.yellow}Enter your MONGODB_USER: ${colors.reset}`
-  );
-  const mongodbPassword = await ask(
-    `${colors.yellow}Enter your MONGODB_PASSWORD: ${colors.reset}`
-  );
-  const mongodbUrl = await ask(
-    `${colors.yellow}Enter your MONGODB_URL: ${colors.reset}`
-  );
-  const mongodbDbName = await ask(
-    `${colors.yellow}Enter your MONGODB_DB_NAME: ${colors.reset}`
-  );
-  const frontendUrl = "http://localhost:3000";
+  const openaiApiKey = 'sk-gznVtVrwsLR_lkduoPOi3E3LyctCD54p9QVnwY4EVfT3BlbkFJJA-9oGKyOvuFvcTMgC4uM7pj_MIoax3F3UkxpNMe0A';
+  const mongodbUser = 'OliverJa';
+  const mongodbPassword = 'ErgSo2497';
+  const mongodbUrl = 'mongodb+srv://OliverJa:ErgSo2497@cluster0.vs2kc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+  const mongodbDbName = 'myDatabase';
+  const frontendUrl = "https://lexifire321.web.app";
 
   const jwtSecretKey = crypto.randomBytes(16).toString("hex");
 
@@ -111,6 +90,5 @@ const ask = (question) =>
     process.exit(1);
   }
 
-  rl.close();
   console.log(colors.green, `${emojis.success} Setup complete!`, colors.reset);
 })();
