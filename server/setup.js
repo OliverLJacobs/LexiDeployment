@@ -90,22 +90,31 @@ const ask = (question) =>
   );
   execSync("npm run build", { stdio: "inherit" });
 
-  const adminUsername = await ask(
-    `${colors.yellow}Enter a username for the admin user: ${colors.reset}`
-  );
-  const adminPassword = await ask(
-    `${colors.yellow}Enter a password for the admin user: ${colors.reset}`
-  );
+  // Use environment variables for admin username and password
+  const adminUsername = process.env.ADMIN_USERNAME || "defaultAdmin";  // Default if environment variable not set
+  const adminPassword = process.env.ADMIN_PASSWORD || "defaultPassword";  // Default if environment variable not set
+
+  if (!adminUsername || !adminPassword) {
+    console.error(colors.red, `${emojis.error} Admin credentials are missing.`, colors.reset);
+    process.exit(1);
+  }
 
   console.log(
     colors.cyan,
     `${emojis.info} Creating admin user...`,
     colors.reset
   );
-  execSync(
-    `node build/server.js create-user ${adminUsername} ${adminPassword}`,
-    { stdio: "inherit" }
-  );
+
+  try {
+    execSync(
+      `node build/server.js create-user ${adminUsername} ${adminPassword}`,
+      { stdio: "inherit" }
+    );
+    console.log(colors.green, `${emojis.success} Admin user created successfully!`, colors.reset);
+  } catch (error) {
+    console.error(colors.red, `${emojis.error} Error creating admin user.`, colors.reset);
+    process.exit(1);
+  }
 
   rl.close();
   console.log(colors.green, `${emojis.success} Setup complete!`, colors.reset);
